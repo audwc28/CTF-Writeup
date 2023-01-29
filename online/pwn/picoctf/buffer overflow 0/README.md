@@ -6,10 +6,6 @@
 ```
 #include <stdio.h>
 #include <stdlib.h>
-=======
-`#include <stdio.h>`
-`#include <stdlib.h>`
->>>>>>> 3fd571557d0a49f2f3540db916aab448fc16a193
 #include <string.h>
 #include <signal.h>
 
@@ -93,9 +89,5 @@ r.interactive()
 **4. Lấy flag**
 
    ![flag.png](photo/flag.png)
-<<<<<<< HEAD
 
    Flag: picoCTF{ov3rfl0ws_ar3nt_that_bad_34d6b87f}
-=======
-   Flag: picoCTF{ov3rfl0ws_ar3nt_that_bad_34d6b87f}
->>>>>>> 3fd571557d0a49f2f3540db916aab448fc16a193
