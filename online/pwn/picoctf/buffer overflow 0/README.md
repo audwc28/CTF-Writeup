@@ -1,8 +1,8 @@
 **#1. Tìm lỗi**
    Ta có file source như sau:
 
-`#include <stdio.h>
-#include <stdlib.h>
+`#include <stdio.h>`
+`#include <stdlib.h>`
 #include <string.h>
 #include <signal.h>
 
