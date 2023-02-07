@@ -49,6 +49,6 @@ r.interactive()
 
 **4. Lấy flag**
 
-![add.png](photo/add.png)
+![flag.png](photo/flag.png)
 
 Flag: ROPE{a_placeholder_32byte_flag!}
