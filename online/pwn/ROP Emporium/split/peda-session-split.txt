@@ -1,2 +1,2 @@
-tbreak main
+break * 0x00000000004006e7
 
