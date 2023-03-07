@@ -8,13 +8,13 @@ Source hàm pwnme:
 
 ![pwnme.png](photo/pwnme.png)
 
-Ta thấy chương trình chạy không thể lấy flag được nhưng phát hiện thêm được hàm ret2win có source như sau:
+Ta thấy biến s được khai báo 32 byte nhưng cho nhập 0x38 = 56 byte -> Có lỗi bof
 
 ![ret2win.png](photo/ret2win.png)
 
 Ta thấy ở hàm này thì có thể lấy được nội dung của flag
 
-Dùng lệnh 'checksec' để kiểm tra có lỗi bof không.
+Dùng lệnh 'checksec' để kiểm tra
 
 ![checksec.png](photo/checksec.png)
 
@@ -28,11 +28,11 @@ Biến s cho nhập 0x38 = 56 phần tử nên thử nhập tràn biến s đế
 
 ![s.png](photo/s.png)
 
-Địa chỉ biến s hiện tại là: rbp - 0x28 -> Khoảng cách từ biến s đến ret là: 0x28 + 0x4 = 44
+Địa chỉ biến s hiện tại là: rbp - 0x20 -> Khoảng cách từ biến s đến ret là: 0x20 + 0x8 = 40
 
 ![add.png](photo/add.png)
 
-Địa chỉ hàm win là: 0x804862c
+Địa chỉ hàm win là: 0x400756
 
 Ta có script như sau:
 
