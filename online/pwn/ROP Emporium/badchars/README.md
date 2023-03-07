@@ -18,7 +18,7 @@ Dùng lệnh file kiểm tra
 
 Ta thấy là file elf 64bit -> Mở bằng ida64 ta có
 
-![file.png](photo/file.png)
+![main.png](photo/main.png)
 
 Hàm pwnme:
 
