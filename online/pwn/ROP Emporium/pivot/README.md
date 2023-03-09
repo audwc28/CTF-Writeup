@@ -58,11 +58,11 @@ Chúng ta cần thực thi hàm foothold_function bởi hàm này cung cấp m�
 
 Thứ tự payload:
  - Lấy địa chỉ pivot
- - Gọi hàm foothold_function
+ - Gọi hàm foothold_function để thêm mục plt và got
  - Tính toán địa chỉ ret2wwin
- - Đặt địa chỉ ret2win vào rax
- - thực hiện call rax để thực thi ret2win
-
+ - call rax
+ Sau đó chúng ta có thể sử dụng lại tiện ích để lấy địa chỉ heap 
+ 
 **3. Viết script**
 
 ![ret2win.png](photo/ret2win.png)
