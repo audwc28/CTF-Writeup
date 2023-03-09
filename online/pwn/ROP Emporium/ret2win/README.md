@@ -1,6 +1,22 @@
 **1. Tìm lỗi**
 
-Chạy thử file bằng IDA ta có như sau: 
+Chạy thử chương trình ta có:
+
+![run.png](photo/run.png)
+
+Chương trình cho phép nhập vào 1 chuỗi và kết thúc ngay sau đó
+
+Dùng lệnh chekcsec để kiểm tra:
+
+![checksec.png](photo/checksec.png)
+
+Ta thấy canary đang ở trạng thái disabled nên có thể khai thác qua lỗi bof
+
+Dùng lệnh file để kiểm tra:
+
+![file.png](photo/file.png)
+
+Ta thấy là file elf 64bit nên mở bằng ida 64 ta được hàm main như sau:
 
 ![main.png](photo/main.png)
 
@@ -8,21 +24,20 @@ Source hàm pwnme:
 
 ![pwnme.png](photo/pwnme.png)
 
-Ta thấy chương trình chạy không thể lấy flag được nhưng phát hiện thêm được hàm ret2win có source như sau:
+Ta thấy biến s được khai báo 32byte nhưng cho phép nhập 0x38 byte -> Có lỗi bof
 
 ![ret2win.png](photo/ret2win.png)
 
 Ta thấy ở hàm này thì có thể lấy được nội dung của flag
 
-Dùng lệnh 'checksec' để kiểm tra có lỗi bof không.
-
-![checksec.png](photo/checksec.png)
-
-Ta thấy CANARY đang ở trạng thái disabled -> có thể khai thác qua lỗi bof
 
 **2. Ý tưởng**
 
 Biến s cho nhập 0x38 = 56 phần tử nên thử nhập tràn biến s đến ret rồi chèn địa chỉ hàm ret2win vào
+
+Thứ tự payload:
+ - 56 byte để tràn đến ret
+ - Địa chỉ hàm ret2win
 
 **3. Viết script**
 

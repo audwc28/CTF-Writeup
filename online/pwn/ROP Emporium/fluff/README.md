@@ -61,6 +61,13 @@ Theo tìm hiểu:
 
 Ở trước bextr có câu lệnh add rcx, 0x3ef2 nên khi thực hiện phải trừ 0x3ef2
 
+Thứ tự payload:
+ - 40 byte tràn đến ret
+ - Truyền ký tự flag.txt vào địa chỉ trống
+ - Địa chỉ lệnh pop rdi
+ - Đưa địa chỉ chứa chuỗi flag.txt mới thêm
+ - địa chỉ lệnh call print_file
+  
 **3. Viết script**
 
 Tìm địa chỉ trống để lưu chuỗi

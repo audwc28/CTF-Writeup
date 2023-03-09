@@ -40,6 +40,15 @@ Ta thấy ở hàm usefulGadgets có câu lệnh mov [r14], r15 nên lợi dụn
 
 Ta thấy địa chỉ 0x0000000000400690 chứa câu lệnh pop r14 và pop r15 nên ý tưởng trên hoàn toàn thực hiện được
 
+Thứ tự payload:
+ - 40 byte để tràn đến ret
+ - Địa chỉ câu lệnh pop r14 và r15
+ - Truyền giá trị tương ứng vào
+ - Địa chỉ lệnh mov [r14], r15
+ - Địa chỉ lệnh pop rdi
+ - Đưa giá trị r14 đã gán ở trên vào
+ - Địa chỉ lệnh call print_file
+ 
 **3. Viết script**
 
 Chúng ta cần phải kiếm địa chỉ còn trống để ghi chuỗi vào:

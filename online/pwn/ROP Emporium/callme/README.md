@@ -1,5 +1,17 @@
 **1. Tìm lỗi**
 
+Chạy thử chương trình ta có:
+
+![run.png](photo/run.png)
+
+Chương trình cho phép nhập một chuỗi và kết thúc ngay sau đó
+
+Dùng lệnh checksec kiểm tra:
+
+![checksec.png](photo/checksec.png)
+
+Ta thấy canary đang ở trạng thái disabled nên có thể khai thác qua lỗi bof
+
 Dùng lệnh file kiểm tra
 
 ![file.png](photo/file.png)
@@ -25,6 +37,13 @@ Hàm usefulFunction:
 Nhập tràn biến s đến ret rồi gọi theo thứ tự các hàm callme_one, callme_two, callme_three với các giá trị tương ứng đã nêu ở trên
 
 Để truyền các giá trị vào các hàm trên thì chúng ta cần truyền các giá trị trên vào các thanh ghi rdi, rsi, rdx nên chúng ta cần phải pop các thanh ghi kia ra
+
+Thứ tự payload:
+ - 40 byte để tràn đến ret
+ - Địa chỉ câu lệnh pop rdi, rsi, rdx
+ - Truyền các địa chỉ tương ứng vào
+ - địa chỉ lệnh callme_one
+ - tương tự với callme_two và callme_three
 
 ![pop.png](photo/pop.png)
 

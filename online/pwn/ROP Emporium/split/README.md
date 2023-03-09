@@ -1,5 +1,17 @@
 **1. Tìm lỗi**
 
+Chạy thử chương trình ta có:
+
+![run.png](photo/run.png)
+
+Chương trình cho phép nhập một chuỗi và kết thúc ngay sau đó
+
+Dùng lệnh checksec để kiểm tra:
+
+![checksec.png](photo/checksec.png)
+
+Ta thấy canary đang ở trạng thái disabled nên có thể khai thác qua lỗi bof
+
 Dùng lệnh 'file' kiểm tra file 
 
 ![file.png](photo/file.png)
@@ -14,7 +26,7 @@ Hàm pwnme:
 
 ![pwnme.png](photo/pwnme.png)
 
-Ta thấy biến s được khai báo tối đa 32 byte nhưng chương trình cho phép nhập 0x60 = 96 byte
+Ta thấy biến s được khai báo tối đa 32 byte nhưng chương trình cho phép nhập 0x60 = 96 byte -> Có lỗi bof
 
 Hàm usefulFunction:
 
@@ -35,6 +47,12 @@ Ta có được địa chỉ chuỗi /bin/cat flag.txt: 0x00601060
 ![rdi.png](photo/rdi.png)
 
 Địa chỉ câu lệnh rdi là: 0x00000000004007c3
+
+Thứ tự payload:
+- 40 byte để tràn đến ret
+- Địa chỉ lệnh pop rdi
+- Đưa địa chỉ chuỗi /bin/cat flag.txt vào rdi
+- Địa chỉ lệnh call syscall
 
 **Viết script**
 
